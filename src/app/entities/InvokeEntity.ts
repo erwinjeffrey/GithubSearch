@@ -2,13 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
 import { Observable } from "rxjs/";
-import { HttpMethodType } from './enums/HttpMethodType';
+import { HttpMethodType } from '../enums/HttpMethodType';
 
 @Injectable()
 export class InvokeEntity{
     private body: any;
     private path : string;
-    private _headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
     private hasToken : boolean = true;
 
     public constructor(private http: HttpClient) {
