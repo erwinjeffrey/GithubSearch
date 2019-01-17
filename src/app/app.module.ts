@@ -4,25 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ReposComponent } from './components/profile/repos/repos.component';
 import { profileDetailComponent } from './components/profile/profileDetail/profile.detail.component';
-
+import { GithHubInterceptor } from './interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    ProfileComponent, 
-    SearchComponent, 
+    AppComponent,
+    ProfileComponent,
+    SearchComponent,
     ReposComponent,
     profileDetailComponent
   ],
-  imports: [
-    BrowserModule, FormsModule, HttpClientModule
+  imports: [BrowserModule, FormsModule, HttpClientModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: GithHubInterceptor, multi: true }
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
