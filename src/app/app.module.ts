@@ -1,3 +1,4 @@
+import { GithubService } from './services/github.service';
 import { SearchComponent } from './components/profile/search/search.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,10 +18,10 @@ import { GithHubInterceptor } from './interceptor';
     ProfileComponent,
     SearchComponent,
     ReposComponent,
-    profileDetailComponent
+    profileDetailComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [
+  providers: [ GithubService,
     { provide: HTTP_INTERCEPTORS, useClass: GithHubInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
