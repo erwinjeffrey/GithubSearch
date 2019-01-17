@@ -1,0 +1,8 @@
+<search (userReturned)="getUsers($event)" (reposRetured)="getRepos($event)" ></search>
+
+<div  *ngIf="user">
+    <profileDetail  [user] = "user"></profileDetail>
+
+     <repos [repos]="repos" ></repos>
+</div>
+
